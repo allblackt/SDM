@@ -6,13 +6,12 @@ import org.apache.log4j.Logger;
 
 import com.tudor.sdm.ui.WelcomeWindow;
 
-public class Main {
+public class SDM {
 
-	private static final Logger log = Logger.getLogger(Main.class.getName()); 
+	private static final Logger log = Logger.getLogger(SDM.class.getName()); 
 	public static void main(String[] args) {
 		log.info("Started app");
 			SwingUtilities.invokeLater(new Runnable() {
-				
 				@Override
 				public void run() {
 					new WelcomeWindow();

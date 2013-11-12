@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -16,6 +17,9 @@ import org.xml.sax.SAXException;
 import com.tudor.sdm.Constants.StringNames;
 
 public class Language {
+	
+	private static final Logger log = Logger.getLogger(Language.class.getName());
+	
 	private static Language instance = new Language();
 	private String locale = Constants.Defaults.LANGUAGE.toString();
 	private Hashtable<String, String> dict;
@@ -34,8 +38,10 @@ public class Language {
 	
 	public void setLocale(String locale) throws IllegalArgumentException, SAXException, IOException, ParserConfigurationException {
 		File f = new File(getClass().getResource("/lang/" + locale + ".xml").getFile());
+		log.info("Attempting to load language file from " + f.getAbsolutePath());
 		if(f.exists()) {
 			Hashtable<String, String> newDict = readDict(f);
+			log.info("Language file loaded successfully.");
 			dict = newDict;
 			this.locale = locale;
 		} else {

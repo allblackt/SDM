@@ -1,1 +1,8 @@
+#java compile path
 /bin
+
+#eclipse settings
+/.settings
+
+#H2 databases
+/db/*.db

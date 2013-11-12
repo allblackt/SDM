@@ -1,6 +1,7 @@
 package com.tudor.sdm;
 
 public class Constants {
+	
 	public enum Defaults {
 		
 		LANGUAGE("en_US");
@@ -31,7 +32,9 @@ public class Constants {
 	}
 	
 	public enum StringNames {
-		TITLE("title");
+		TITLE("title"),
+		WINDOW_MANAGE_CLIENTS_TITLE("window_manage_clients_title"),
+		BTN_MANAGE_CLIENTS_LABEL("btn_manage_clients_label");
 		String stringName;
 		
 		private StringNames(String stringName) {
