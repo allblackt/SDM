@@ -10,7 +10,7 @@ public class SDM {
 
 	private static final Logger log = Logger.getLogger(SDM.class.getName()); 
 	public static void main(String[] args) {
-		log.info("Started app");
+		log.info("Started app from " + System.getProperty("user.dir"));
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {

@@ -38,13 +38,14 @@ public class Language {
 	
 	public void setLocale(String locale) throws IllegalArgumentException, SAXException, IOException, ParserConfigurationException {
 		File f = new File(getClass().getResource("/lang/" + locale + ".xml").getFile());
-		log.info("Attempting to load language file from " + f.getAbsolutePath());
+		log.debug("Attempting to load language file from " + f.getAbsolutePath());
 		if(f.exists()) {
 			Hashtable<String, String> newDict = readDict(f);
-			log.info("Language file loaded successfully.");
+			log.debug("Language file loaded successfully.");
 			dict = newDict;
 			this.locale = locale;
 		} else {
+			log.warn("Language file was not found at " + f.getAbsolutePath());
 			throw new IllegalArgumentException(String.format(Constants.DefaultErrorMessages.LANG_NOT_FOUND.toString(), locale));
 		}
 	}

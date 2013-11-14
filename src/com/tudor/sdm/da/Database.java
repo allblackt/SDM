@@ -4,19 +4,28 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 public class Database {
-	private Connection conn;
-	// TODO configurability for connection string
-	private String connectionString = "jdbc:h2://e:/Tudor/Proiecte/Workspace/SDM/db/SDM";
-	private static final Database instance = new Database();
 	
-	private Database(){
-		
+	private static final Logger log = Logger.getLogger(Database.class.getName());
+	
+	private Connection conn;
+	private String connectionString = "jdbc:h2://" + System.getProperty("user.dir") + "/db/SDM";
+	
+	public Database() throws SQLException {
+		log.debug("Constructor called");
+		DriverManager.registerDriver(org.h2.Driver.load());
 	}
 	
 	public void open() throws SQLException, ClassNotFoundException {
-//		Class.forName(org.h2.Driver.class.getName());
-		DriverManager.registerDriver(org.h2.Driver.load());
+		log.debug("Attempting to load database from " + connectionString);
 		conn = DriverManager.getConnection(connectionString);
+	}
+	
+	public void close() throws SQLException {
+		if (conn != null) {
+			conn.close();
+		}
 	}
 }
