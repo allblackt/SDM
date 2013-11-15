@@ -7,12 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
 
 import com.google.common.base.Joiner;
 
+/**
+ * Helper class for basic database operations, Please note that this class does not check for SQL injection.
+ * @author tudor
+ *
+ */
 public class Database {
 
 	private static final Logger log = Logger
@@ -39,6 +45,7 @@ public class Database {
 	}
 	
 	private void checkConnection() throws SQLException, IllegalStateException {
+		log.debug("Checking database connection...");
 		if (conn == null || conn.isClosed()) {
 			throw new IllegalStateException();
 		}
@@ -64,20 +71,18 @@ public class Database {
 		return result;
 	}
 
-	public int Insert(String table, Map<String, String> data) throws IllegalStateException, SQLException {
+	public int Insert(String table, LinkedHashMap<String, String> data) throws IllegalStateException, SQLException {
 		checkConnection();
-		Statement stmt = conn.createStatement();
-		
 		String columns = Joiner.on(",").join(data.keySet());
 		String[] valuePH = new String[data.size()];
 		Arrays.fill(valuePH, "?");
 		String sql = String.format("INSERT INTO %s(%s) VALUES (%s)", table, columns, Joiner.on(",").join(valuePH));
-		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		Iterator<String> valuesIterator = data.values().iterator();
 		for (int i = 0; i < data.size(); i++) {
-			pstmt.setString(i +1, data.values().iterator().next());
+			pstmt.setString(i +1, valuesIterator.next().toString());
 		}
-		
+		log.debug(pstmt.toString());
 		
 		return 0;
 	}
