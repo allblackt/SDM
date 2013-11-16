@@ -13,16 +13,20 @@ public class EMF {
 	private static EntityManagerFactory emf = null;
 	private static EMF instance = null;
 	private static String connectionString;
-	private static String importFiles;
+	private static boolean isTest = false;
 	
 	private EMF() {
 		Map<String, String> properties = new HashMap<String, String>();
+		
+		if(isTest) {
+			log.debug("Setting up the connection for Unit testing...");
+			properties.put("hibernate.hbm2ddl.auto","create-drop");
+			connectionString = String.format("jdbc:h2:mem:test");
+		} else {
+			
+		}
 		properties.put("hibernate.connection.url", connectionString);
 		
-		if(importFiles != null) {
-			log.debug("Setting import_files property...");
-			properties.put("hibernate.hbm2ddl.import_files", importFiles);
-		}
 		
 		emf = Persistence.createEntityManagerFactory("sdm-ds", properties);
 	}
@@ -36,13 +40,9 @@ public class EMF {
 	}
 	
 	public static EntityManagerFactory getTestInstance() {
-		log.debug("Creating the test instance....");
+		log.debug("Flagging as test instance....");
 		if (instance == null) {
-			String createTablesScriptLocation = System.getProperty("user.dir") + "sql_scripts_unit_testing/create_tables.sql";
-			String insertDataScriptLocation = System.getProperty("user.dir") + "sql_scripts_unit_testing/insert_data.sql";
-			//importFiles = String.format("%s,%s", "/create_tables.sql", "/insert_data.sql");
-			connectionString = String.format("jdbc:h2:mem:test");
-			log.debug("Connection string for test instance is: " + connectionString);
+			isTest = true;
 			instance = new EMF();
 		}
 		return emf;

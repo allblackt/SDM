@@ -2,18 +2,14 @@ package com.tudor.sdm.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog.ModalityType;
-import java.sql.SQLException;
-import java.util.LinkedHashMap;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import com.google.common.collect.Maps;
 import com.tudor.sdm.Constants.StringNames;
 import com.tudor.sdm.Language;
-import com.tudor.sdm.da.Database;
 
 public class ClientList {
 	private JDialog clientDialog;
@@ -54,24 +50,7 @@ public class ClientList {
 	}
 	
 	private void getTableData() {
-		try {
-			Database db = new Database();
+		
 			
-			LinkedHashMap<String, String> data = Maps.newLinkedHashMap();
-			data.put("name", "Popescu George");
-			data.put("city", "Bucharest");
-			data.put("country", "Romania");
-			
-			db.open();
-			db.Insert("client", data);
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
