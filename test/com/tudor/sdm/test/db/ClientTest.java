@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.tudor.sdm.EMF;
@@ -20,9 +21,6 @@ public class ClientTest {
 	public void oneTimeSetUp() {
 		System.out.println("@BeforeClass - oneTimeSetUp");
 		emf = EMF.getTestInstance();
-		client = new Client.Builder().name("Ion Popescu")
-				.country("Romania").city("Bucharest").street("Bulevardul Unirii")
-				.streetNo("319 C").miscAddress("Cladirea Trust Center").build();
 	}
 	
 	@AfterClass
@@ -34,8 +32,9 @@ public class ClientTest {
     	client = null;
     }
 	
-	@Test
-	public void addClient() {
+	@Test(dataProvider="oneClient", dataProviderClass=ClientDataProvider.class)
+	public void addClient(Client c1) {
+		client = c1;
 		Client nou = ClientDAO.get().add(client);
 		Assert.assertEquals(client, nou);
 	}
@@ -45,5 +44,4 @@ public class ClientTest {
 		Client nou = ClientDAO.get().getById(client.getId());
 		Assert.assertEquals(nou, client);
 	}
-	
 }
