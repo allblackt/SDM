@@ -7,8 +7,12 @@
       <description>H2 Persistence Unit</description>
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-<!-- This is where we tell JPA/Hibernate about our @Entity objects -->      
-<!-- 	<class>org.ocpsoft.example.hibernate.model.SimpleObject</class> -->
+	<!-- This is where we tell JPA/Hibernate about our @Entity objects -->      
+<!-- 	<class>com.tudor.sdm.entity.</class> -->
+	<class>com.tudor.sdm.entity.Client</class>
+	<class>com.tudor.sdm.entity.SellableItem</class>
+	<class>com.tudor.sdm.entity.SportsSession</class>
+	<class>com.tudor.sdm.entity.Field</class>
 
       <properties>
          <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
