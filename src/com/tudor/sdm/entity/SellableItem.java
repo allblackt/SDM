@@ -29,24 +29,24 @@ public class SellableItem {
 	private String name;
 	private Long cost;
 
-	public static class SellableItemBuilder {
+	public static class SellableItemBuilder<T extends SellableItemBuilder> {
 		private Long id;
 		private String name;
 		private Long cost;
 
-		public SellableItemBuilder id(Long id) {
+		public T id(Long id) {
 			this.id = id;
-			return this;
+			return (T)this;
 		}
 
-		public SellableItemBuilder name(String name) {
+		public T name(String name) {
 			this.name = name;
-			return this;
+			return (T)this;
 		}
 
-		public SellableItemBuilder cost(Long cost) {
+		public T cost(Long cost) {
 			this.cost = cost;
-			return this;
+			return (T)this;
 		}
 
 		public SellableItem build() {
@@ -54,7 +54,7 @@ public class SellableItem {
 		}
 	}
 
-	private SellableItem(SellableItemBuilder builder) {
+	protected SellableItem(SellableItemBuilder builder) {
 		this.id = builder.id;
 		this.name = builder.name;
 		this.cost = builder.cost;

@@ -8,13 +8,17 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "sportssession")
 @PrimaryKeyJoinColumn(name = "id")
+@ToString
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @Getter(AccessLevel.PUBLIC)
 @Setter(AccessLevel.PUBLIC)
@@ -28,8 +32,10 @@ public class SportsSession extends SellableItem {
 	private Date endTime;
 	private boolean isCanceled = false;
 
-	public static class SportsSessionBuilder {
-		
+	@NoArgsConstructor
+	public static class SportsSessionBuilder extends
+			SellableItem.SellableItemBuilder<SportsSessionBuilder> {
+
 		private Client client;
 		private Field field;
 		private Date startTime;
@@ -40,7 +46,7 @@ public class SportsSession extends SellableItem {
 			this.client = client;
 			return this;
 		}
-		
+
 		public SportsSessionBuilder field(Field field) {
 			this.field = field;
 			return this;
@@ -62,13 +68,16 @@ public class SportsSession extends SellableItem {
 		}
 
 		public SportsSession build() {
-			SportsSession sportsSession = new SportsSession();
-			sportsSession.client = client;
-			sportsSession.field = field;
-			sportsSession.startTime = startTime;
-			sportsSession.endTime = endTime;
-			sportsSession.isCanceled = isCanceled;
-			return sportsSession;
+			return new SportsSession(this);
 		}
+	}
+
+	private SportsSession(SportsSessionBuilder builder) {
+		super(builder);
+		this.client = builder.client;
+		this.field = builder.field;
+		this.startTime = builder.startTime;
+		this.endTime = builder.endTime;
+		this.isCanceled = builder.isCanceled;
 	}
 }
