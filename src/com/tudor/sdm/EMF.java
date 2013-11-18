@@ -33,7 +33,7 @@ public class EMF {
 
 	public static EntityManagerFactory get() {
 		if (instance == null) {
-			connectionString = "jdbc:h2://" + System.getProperty("user.dir") + "/db/SDM";
+			connectionString = "jdbc:h2:file:db/SDM";
 			instance = new EMF();
 		}
 		return emf;
