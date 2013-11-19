@@ -1,5 +1,7 @@
 package com.tudor.sdm.test.db;
 
+import java.util.List;
+
 import javax.persistence.EntityManagerFactory;
 
 import org.testng.Assert;
@@ -42,5 +44,11 @@ public class ClientTest {
 	public void getClientById() {
 		Client nou = ClientDAO.get().getById(client.getId());
 		Assert.assertEquals(nou, client);
+	}
+	
+	@Test(dependsOnMethods={"addClient"})
+	public void getAllClients() {
+		List<Client> clients = ClientDAO.get().getAll();
+		Assert.assertEquals(clients.size(), 1);
 	}
 }
