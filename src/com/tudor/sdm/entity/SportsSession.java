@@ -3,6 +3,8 @@ package com.tudor.sdm.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -24,10 +26,9 @@ import lombok.ToString;
 @Setter(AccessLevel.PUBLIC)
 public class SportsSession extends SellableItem {
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER, optional=false)
+	@JoinColumn(name="client")
 	private Client client;
-	@ManyToOne
-	private Field field;
 	private Date startTime;
 	private Date endTime;
 	private boolean isCanceled = false;
@@ -37,18 +38,12 @@ public class SportsSession extends SellableItem {
 			SellableItem.SellableItemBuilder<SportsSessionBuilder> {
 
 		private Client client;
-		private Field field;
 		private Date startTime;
 		private Date endTime;
 		private boolean isCanceled;
 
 		public SportsSessionBuilder client(Client client) {
 			this.client = client;
-			return this;
-		}
-
-		public SportsSessionBuilder field(Field field) {
-			this.field = field;
 			return this;
 		}
 
@@ -75,7 +70,6 @@ public class SportsSession extends SellableItem {
 	private SportsSession(SportsSessionBuilder builder) {
 		super(builder);
 		this.client = builder.client;
-		this.field = builder.field;
 		this.startTime = builder.startTime;
 		this.endTime = builder.endTime;
 		this.isCanceled = builder.isCanceled;
