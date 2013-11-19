@@ -22,6 +22,9 @@ public class EMF {
 			log.debug("Setting up the connection for Unit testing...");
 			properties.put("hibernate.hbm2ddl.auto","create-drop");
 			connectionString = String.format("jdbc:h2:mem:test");
+//			connectionString = "jdbc:h2:file:db/SDM-test";
+//			properties.put("hibernate.hbm2ddl.auto","create");
+			
 		} else {
 			
 		}
