@@ -21,6 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter(AccessLevel.PUBLIC)
 @Setter(AccessLevel.PUBLIC)
+@SuppressWarnings("unchecked")
 public class SellableItem {
 
 	@Id
@@ -29,7 +30,7 @@ public class SellableItem {
 	private String name;
 	private Long cost;
 
-	public static class SellableItemBuilder<T extends SellableItemBuilder> {
+	public static class SellableItemBuilder<T extends SellableItemBuilder<?>> {
 		private Long id;
 		private String name;
 		private Long cost;
@@ -54,7 +55,7 @@ public class SellableItem {
 		}
 	}
 
-	protected SellableItem(SellableItemBuilder builder) {
+	protected <T> SellableItem(SellableItemBuilder<?> builder) {
 		this.id = builder.id;
 		this.name = builder.name;
 		this.cost = builder.cost;
