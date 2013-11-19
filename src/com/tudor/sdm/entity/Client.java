@@ -26,6 +26,7 @@ public class Client {
 	@Column(nullable = false)
 	private String name;
 
+	@Column(length = 50)
 	private String iban;
 
 	@Column(length = 50)
