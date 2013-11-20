@@ -26,9 +26,6 @@ import lombok.ToString;
 @Setter(AccessLevel.PUBLIC)
 public class SportsSession extends SellableItem {
 
-	@ManyToOne(fetch=FetchType.EAGER, optional=false)
-	@JoinColumn(name="client")
-	private Client client;
 	private Date startTime;
 	private Date endTime;
 	private boolean isCanceled = false;
@@ -37,15 +34,10 @@ public class SportsSession extends SellableItem {
 	public static class SportsSessionBuilder extends
 			SellableItem.SellableItemBuilder<SportsSessionBuilder> {
 
-		private Client client;
 		private Date startTime;
 		private Date endTime;
 		private boolean isCanceled;
 
-		public SportsSessionBuilder client(Client client) {
-			this.client = client;
-			return this;
-		}
 
 		public SportsSessionBuilder startTime(Date startTime) {
 			this.startTime = startTime;
@@ -69,7 +61,6 @@ public class SportsSession extends SellableItem {
 
 	private SportsSession(SportsSessionBuilder builder) {
 		super(builder);
-		this.client = builder.client;
 		this.startTime = builder.startTime;
 		this.endTime = builder.endTime;
 		this.isCanceled = builder.isCanceled;

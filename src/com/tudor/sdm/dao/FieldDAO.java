@@ -1,21 +1,18 @@
 package com.tudor.sdm.dao;
 
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import com.tudor.sdm.entity.Field;
 
-import com.tudor.sdm.entity.SportsPass;
-
-public class FieldDAO extends DAO<SportsPass, Long> {
+public class FieldDAO extends DAO<Field, Long> {
 
 	private static FieldDAO instance = null;
 	
-	private FieldDAO(Class<SportsPass> clazz) {
+	private FieldDAO(Class<Field> clazz) {
 		super(clazz);
 	}
 	
 	public static FieldDAO get(){
 		if(instance == null) {
-			instance = new FieldDAO(SportsPass.class);
+			instance = new FieldDAO(Field.class);
 		}
 		return instance;
 	}

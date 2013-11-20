@@ -35,7 +35,6 @@ public class SportsSessionTest {
 	
 	@Test(dataProvider="getSingleSportsSession", dataProviderClass=SportsSessionDataProvider.class)
 	public void addNewSportsSession(SportsSession session) {
-		ClientDAO.get().add(session.getClient());
 		this.session = SportsSessionDAO.get().add(session);
 	}
 	
