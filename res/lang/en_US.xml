@@ -3,4 +3,11 @@
 	<string name="title">SDM - Welcome</string>
 	<string name="btn_manage_clients_label">Manage Clients</string>
 	<string name="window_manage_clients_title">Manage Clients</string>
+	
+	
+	<!-- Error strings -->
+	<string name="err_not_enough_sessions_left_on_pass">The client doesn't have enough sessions on their pass.</string>
+	<string name="err_maxsessions_must_be_greater_than_remainingsessions">The number of sessions must be greater than the remaining number of sessions.</string>
+	<string name="err_maxsessions_must_be_greater_than_zero">The number of sessions must be greater than zero.</string>
+	<string name="err_remainingsessions_must_be_a_positive_number">The number of remaing sessions must be a positive number.</string>
 </strings>
