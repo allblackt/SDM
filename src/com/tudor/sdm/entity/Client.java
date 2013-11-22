@@ -50,7 +50,7 @@ public class Client {
 	@Column(length = 255)
 	private String miscAddress;
 
-	public static class Builder {
+	public static class ClientBuilder {
 		private String name;
 		private String iban;
 		private String personalnumber;
@@ -61,47 +61,47 @@ public class Client {
 		private String streetNo;
 		private String miscAddress;
 
-		public Builder name(String name) {
+		public ClientBuilder name(String name) {
 			this.name = name;
 			return this;
 		}
 
-		public Builder iban(String iban) {
+		public ClientBuilder iban(String iban) {
 			this.iban = iban;
 			return this;
 		}
 
-		public Builder personalnumber(String personalnumber) {
+		public ClientBuilder personalnumber(String personalnumber) {
 			this.personalnumber = personalnumber;
 			return this;
 		}
 
-		public Builder country(String country) {
+		public ClientBuilder country(String country) {
 			this.country = country;
 			return this;
 		}
 
-		public Builder city(String city) {
+		public ClientBuilder city(String city) {
 			this.city = city;
 			return this;
 		}
 
-		public Builder district(String district) {
+		public ClientBuilder district(String district) {
 			this.district = district;
 			return this;
 		}
 
-		public Builder street(String street) {
+		public ClientBuilder street(String street) {
 			this.street = street;
 			return this;
 		}
 
-		public Builder streetNo(String streetNo) {
+		public ClientBuilder streetNo(String streetNo) {
 			this.streetNo = streetNo;
 			return this;
 		}
 
-		public Builder miscAddress(String miscAddress) {
+		public ClientBuilder miscAddress(String miscAddress) {
 			this.miscAddress = miscAddress;
 			return this;
 		}

@@ -1,5 +1,7 @@
 package com.tudor.sdm.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,11 +40,14 @@ public class SportsPass {
 	private String barcode;
 	private String title;
 	@ManyToOne
+	@JoinColumn(name = "sportssessiontype")
 	private SellableItem sportsSessionType;
 	private int maxSessions;
 	private int remainingSessions;
+	private Date created;
+	private Date lastUpdated;
 
-	public static class Builder {
+	public static class SportsPassBuilder {
 		private Long id;
 		private Client client;
 		private String barcode;
@@ -50,39 +55,51 @@ public class SportsPass {
 		private SellableItem sportsSessionType;
 		private int maxSessions;
 		private int remainingSessions;
+		private Date created;
+		private Date lastUpdated;
 
-		public Builder id(Long id) {
+		public SportsPassBuilder id(Long id) {
 			this.id = id;
 			return this;
 		}
 
-		public Builder client(Client client) {
+		public SportsPassBuilder client(Client client) {
 			this.client = client;
 			return this;
 		}
 
-		public Builder barcode(String barcode) {
+		public SportsPassBuilder barcode(String barcode) {
 			this.barcode = barcode;
 			return this;
 		}
 
-		public Builder title(String title) {
+		public SportsPassBuilder title(String title) {
 			this.title = title;
 			return this;
 		}
 
-		public Builder sportsSessionType(SellableItem sportsSessionType) {
+		public SportsPassBuilder sportsSessionType(SellableItem sportsSessionType) {
 			this.sportsSessionType = sportsSessionType;
 			return this;
 		}
 
-		public Builder maxSessions(int maxSessions) {
+		public SportsPassBuilder maxSessions(int maxSessions) {
 			this.maxSessions = maxSessions;
 			return this;
 		}
 
-		public Builder remainingSessions(int remainingSessions) {
+		public SportsPassBuilder remainingSessions(int remainingSessions) {
 			this.remainingSessions = remainingSessions;
+			return this;
+		}
+		
+		public SportsPassBuilder created(Date created) {
+			this.created = created;
+			return this;
+		}
+		
+		public SportsPassBuilder lastUpdated(Date lastUpdated) {
+			this.lastUpdated = lastUpdated;
 			return this;
 		}
 
@@ -91,7 +108,7 @@ public class SportsPass {
 		}
 	}
 
-	private SportsPass(Builder builder) {
+	private SportsPass(SportsPassBuilder builder) {
 		this.id = builder.id;
 		this.client = builder.client;
 		this.barcode = builder.barcode;
@@ -99,6 +116,8 @@ public class SportsPass {
 		this.sportsSessionType = builder.sportsSessionType;
 		this.maxSessions = builder.maxSessions;
 		this.remainingSessions = builder.remainingSessions;
+		this.created = builder.created;
+		this.lastUpdated = builder.lastUpdated;
 	}
 	
 	public void decreseRemaining() {
@@ -123,5 +142,7 @@ public class SportsPass {
 		if (remainingSessions < 0) {
 			throw new IllegalStateException(Language.get().getString(StringNames.ERR_REMAININGSESSIONS_MUST_BE_A_POSITIVE_NUMBER));
 		}
+		created = created == null ? new Date() : created;
+		lastUpdated = new Date();
 	}
 }

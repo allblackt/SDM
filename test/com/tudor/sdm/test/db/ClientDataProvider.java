@@ -9,7 +9,7 @@ public class ClientDataProvider {
 	@DataProvider(name="oneClient")
 	public static Object[][] getOneClient() {
 		return new Object[][] {
-			{ new Client.Builder().name("Ion Popescu")
+			{ new Client.ClientBuilder().name("Ion Popescu")
 				.country("Romania").city("Bucharest").street("Bulevardul Unirii")
 				.streetNo("319 C").miscAddress("Cladirea Trust Center").build()  }	
 		};

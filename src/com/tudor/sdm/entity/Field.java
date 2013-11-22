@@ -21,7 +21,24 @@ import lombok.Setter;
 public class Field {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
+
+	public static class SportsPassBuilder {
+		private String name;
+
+		public SportsPassBuilder name(String name) {
+			this.name = name;
+			return this;
+		}
+
+		public Field build() {
+			return new Field(this);
+		}
+	}
+
+	private Field(SportsPassBuilder builder) {
+		this.name = builder.name;
+	}
 }

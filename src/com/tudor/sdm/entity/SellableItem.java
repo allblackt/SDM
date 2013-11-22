@@ -28,12 +28,12 @@ public class SellableItem {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
-	private Long cost;
+	private Long price;
 
 	public static class SellableItemBuilder<T extends SellableItemBuilder<?>> {
 		private Long id;
 		private String name;
-		private Long cost;
+		private Long price;
 
 		public T id(Long id) {
 			this.id = id;
@@ -45,8 +45,8 @@ public class SellableItem {
 			return (T)this;
 		}
 
-		public T cost(Long cost) {
-			this.cost = cost;
+		public T price(Long price) {
+			this.price = price;
 			return (T)this;
 		}
 
@@ -58,6 +58,6 @@ public class SellableItem {
 	protected <T> SellableItem(SellableItemBuilder<?> builder) {
 		this.id = builder.id;
 		this.name = builder.name;
-		this.cost = builder.cost;
+		this.price = builder.price;
 	}
 }
