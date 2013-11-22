@@ -13,7 +13,7 @@ public class SportsSessionDataProvider {
 	public static Object[][] getSingleSportsSession() {
 		return new Object[][] {
 			{
-				new SportsSession.SportsSessionBuilder().name("Tennis 1hr session").cost(100L).startTime(new Date(1384765200000L)).endTime(new Date(1384768800000L)).build()
+				new SportsSession.SportsSessionBuilder().name("Tennis 1hr session").price(100L).duration(50).build()
 			}
 		};
 	}

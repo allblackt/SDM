@@ -1,11 +1,6 @@
 package com.tudor.sdm.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -26,34 +21,19 @@ import lombok.ToString;
 @Setter(AccessLevel.PUBLIC)
 public class SportsSession extends SellableItem {
 
-	private Date startTime;
-	private Date endTime;
-	private boolean isCanceled = false;
+	private int duration;
 
 	@NoArgsConstructor
 	public static class SportsSessionBuilder extends
 			SellableItem.SellableItemBuilder<SportsSessionBuilder> {
 
-		private Date startTime;
-		private Date endTime;
-		private boolean isCanceled;
+		private int duration;
 
-
-		public SportsSessionBuilder startTime(Date startTime) {
-			this.startTime = startTime;
+		public SportsSessionBuilder duration(int duration) {
+			this.duration = duration;
 			return this;
 		}
-
-		public SportsSessionBuilder endTime(Date endTime) {
-			this.endTime = endTime;
-			return this;
-		}
-
-		public SportsSessionBuilder isCanceled(boolean isCanceled) {
-			this.isCanceled = isCanceled;
-			return this;
-		}
-
+		
 		public SportsSession build() {
 			return new SportsSession(this);
 		}
@@ -61,8 +41,6 @@ public class SportsSession extends SellableItem {
 
 	private SportsSession(SportsSessionBuilder builder) {
 		super(builder);
-		this.startTime = builder.startTime;
-		this.endTime = builder.endTime;
-		this.isCanceled = builder.isCanceled;
+		this.duration = builder.duration;
 	}
 }
