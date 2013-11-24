@@ -29,11 +29,13 @@ public class SellableItem {
 	private Long id;
 	private String name;
 	private Long price;
+	private Long cost;
 
 	public static class SellableItemBuilder<T extends SellableItemBuilder<?>> {
 		private Long id;
 		private String name;
 		private Long price;
+		private Long cost;
 
 		public T id(Long id) {
 			this.id = id;
@@ -59,5 +61,6 @@ public class SellableItem {
 		this.id = builder.id;
 		this.name = builder.name;
 		this.price = builder.price;
+		this.cost = builder.cost;
 	}
 }
