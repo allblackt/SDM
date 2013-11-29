@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <strings>
 	<string name="title">SDM - Welcome</string>
+	
+	<!-- Button lables -->
 	<string name="btn_manage_clients_label">Manage Clients</string>
+	<string name="btn_add_new_sports_session_label">Add new sports session</string>
+	<string name="btn_edit_sports_session_label">Modify sports session</string>
+	
+	<!-- Window titles -->
+	<string name="window_title_list_sports_sessions">Sports sessions list view</string>
 	<string name="window_manage_clients_title">Manage Clients</string>
 	
+	<!-- Table columns -->
+	<string name="tbl_column_ables_list_sports_sessions">Name,Duration,Price</string>
 	
 	<!-- Error strings -->
 	<string name="err_not_enough_sessions_left_on_pass">The client doesn't have enough sessions on their pass.</string>
