@@ -32,11 +32,20 @@ public class Constants {
 	}
 	
 	public enum StringNames {
+		// Window titles
 		TITLE("title"),
 		WINDOW_MANAGE_CLIENTS_TITLE("window_manage_clients_title"),
-		BTN_MANAGE_CLIENTS_LABEL("btn_manage_clients_label"),
+		WINDOW_TITLE_LIST_SPORTS_SESSIONS("window_title_list_sports_sessions"),
 		
-		//Errors
+		// Button titles
+		BTN_MANAGE_CLIENTS_LABEL("btn_manage_clients_label"),
+		BTN_ADD_NEW_SPORTS_SESSION_LABEL("btn_add_new_sports_session_label"),
+		BTN_EDIT_SPORTS_SESSION_LABEL("btn_edit_sports_session_label"),
+		
+		// Table columns
+		TBL_COLUMN_ABLES_LIST_SPORTS_SESSIONS("tbl_column_ables_list_sports_sessions"),
+		
+		// Errors
 		ERR_NOT_ENOUGH_SESSIONS_LEFT_ON_PASS("err_not_enough_sessions_left_on_pass"),
 		ERR_MAXSESSIONS_MUST_BE_GREATER_THAN_REMAININGSESSIONS("err_maxsessions_must_be_greater_than_remainingsessions"),
 		ERR_MAXSESSIONS_MUST_BE_GREATER_THAN_ZERO("err_maxsessions_must_be_greater_than_zero"),
