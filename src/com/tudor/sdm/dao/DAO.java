@@ -54,6 +54,7 @@ public abstract class DAO<T , ID> implements IDAO<T, ID> {
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		} finally {
 			if (em != null) {
 				if(em.getTransaction().isActive()) {
@@ -75,6 +76,7 @@ public abstract class DAO<T , ID> implements IDAO<T, ID> {
 			item = (T) em.find(clazz, id);
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		} finally {
 			if (em != null) {
 				if(em.getTransaction().isActive()) {
@@ -99,12 +101,12 @@ public abstract class DAO<T , ID> implements IDAO<T, ID> {
 			return tq.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		} finally {
 			if (em != null) {
 				em.clear();
 				em.close();
 			}
 		}
-		return null;
 	}
 }

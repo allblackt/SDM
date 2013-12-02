@@ -15,6 +15,11 @@ import org.apache.log4j.Logger;
 import com.tudor.sdm.Constants;
 import com.tudor.sdm.Constants.StringNames;
 import com.tudor.sdm.Language;
+import javax.swing.JToolBar;
+import java.awt.BorderLayout;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
 
 
 public class WelcomeWindow {
@@ -53,8 +58,23 @@ public class WelcomeWindow {
 				new ClientList(window);
 			}
 		});
-		
 		panel.add(btnManageClients);
+		
+		JMenuBar menuBar = new JMenuBar();
+		window.getContentPane().add(menuBar, BorderLayout.NORTH);
+		
+		JMenu mnuAdminMenu = new JMenu(Language.get().getString(StringNames.MNU_ADMIN_LABEL));
+		menuBar.add(mnuAdminMenu);
+		
+		JMenuItem mniListSportsSessionTypes = new JMenuItem(Language.get().getString(StringNames.MNU_LIST_SPORTS_SESSION_TYPES));
+		mniListSportsSessionTypes.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SportsSessionListView();
+			}
+		});
+		mnuAdminMenu.add(mniListSportsSessionTypes);
 	}
 
 	

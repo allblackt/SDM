@@ -15,17 +15,21 @@ import java.awt.Dimension;
 
 public class SportsSessionListView extends JFrame {
 	private JTable tblSportsSessionList;
+	
 	public SportsSessionListView() {
 		setSize(new Dimension(900, 500));
 		getContentPane().setLayout(null);
 		
-		JButton brnAddSportsSession = new JButton(Language.get().getString(StringNames.BTN_ADD_NEW_SPORTS_SESSION_LABEL));
-		brnAddSportsSession.addActionListener(new ActionListener() {
+		setTitle(Language.get().getString(StringNames.WINDOW_TITLE_LIST_SPORTS_SESSIONS));
+		
+		JButton btnAddSportsSession = new JButton(Language.get().getString(StringNames.BTN_ADD_NEW_SPORTS_SESSION_LABEL));
+		btnAddSportsSession.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new AddEditSportsSession();
 			}
 		});
-		brnAddSportsSession.setBounds(761, 12, 117, 25);
-		getContentPane().add(brnAddSportsSession);
+		btnAddSportsSession.setBounds(761, 12, 117, 25);
+		getContentPane().add(btnAddSportsSession);
 		
 		JButton btnEditSportsSession = new JButton(Language.get().getString(StringNames.BTN_EDIT_SPORTS_SESSION_LABEL));
 		btnEditSportsSession.setBounds(761, 49, 117, 25);
@@ -34,5 +38,7 @@ public class SportsSessionListView extends JFrame {
 		tblSportsSessionList = new JTable();
 		tblSportsSessionList.setBounds(12, 12, 1, 1);
 		getContentPane().add(tblSportsSessionList);
+		
+		setVisible(true);
 	}
 }

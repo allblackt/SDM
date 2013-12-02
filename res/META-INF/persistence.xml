@@ -9,15 +9,16 @@
 
 	<!-- This is where we tell JPA/Hibernate about our @Entity objects -->      
 <!-- 	<class>com.tudor.sdm.entity.</class> -->
-	<class>com.tudor.sdm.entity.Client</class>
-	<class>com.tudor.sdm.entity.SellableItem</class>
-	<class>com.tudor.sdm.entity.SportsSession</class>
-	<class>com.tudor.sdm.entity.Field</class>
+<!-- 	<class>com.tudor.sdm.entity.Client</class> -->
+<!-- 	<class>com.tudor.sdm.entity.SellableItem</class> -->
+<!-- 	<class>com.tudor.sdm.entity.SportsSession</class> -->
+<!-- 	<class>com.tudor.sdm.entity.Field</class> -->
 
       <properties>
          <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
          <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
          <property name="hibernate.show_sql" value="true" />
+         <property name="hibernate.hbm2ddl.auto" value="update"/>
       </properties>
    </persistence-unit>
 </persistence>
