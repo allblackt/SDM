@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+	<string name="title">SDM - Welcome</string>
+	
+	<!-- Button labels -->
+	<string name="btn_generic_save_label">Save</string>
+	<string name="btn_generic_cancel_label">Cancel</string>
+	<string name="btn_manage_clients_label">Manage Clients</string>
+	<string name="btn_add_new_sports_session_label">Add new sports session</string>
+	<string name="btn_edit_sports_session_label">Modify sports session</string>
+	
+	<!-- Menu items -->
+	<string name="mnu_admin_label">Administration</string>
+	<string name="mnu_list_sports_session_types">List sports session types</string>
+	
+	<!-- Generic labels throughout the application -->
+	<string name="lbl_sports_session_name">Name</string>
+	<string name="lbl_sports_session_duration">Duration(min)</string>
+	<string name="lbl_sports_session_price">Price</string>
+	
+	
+	<!-- Window titles -->
+	<string name="window_title_list_sports_sessions">Sports sessions list view</string>
+	<string name="window_title_add_edit_sports_sessions">Add/Edit Sports Sessions</string>
+	<string name="window_manage_clients_title">Manage Clients</string>
+	
+	<!-- Table columns -->
+	<string name="tbl_column_ables_list_sports_sessions">Name,Duration,Price</string>
+	
+	<!-- Error strings -->
+	<string name="err_not_enough_sessions_left_on_pass">The client doesn't have enough sessions on their pass.</string>
+	<string name="err_invalid_data_inputed_for_sports_session">Invalid data entered for the Sports Session!</string>
+	<string name="err_maxsessions_must_be_greater_than_remainingsessions">The number of sessions must be greater than the remaining number of sessions.</string>
+	<string name="err_maxsessions_must_be_greater_than_zero">The number of sessions must be greater than zero.</string>
+	<string name="err_remainingsessions_must_be_a_positive_number">The number of remaining sessions must be a positive number.</string>
+</strings>

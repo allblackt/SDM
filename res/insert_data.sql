@@ -1,1 +1,0 @@
-insert into client(name, country, city) values ('Customer Name','Customer Country', 'Customer City');

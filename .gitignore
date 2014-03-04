@@ -9,3 +9,7 @@
 
 #test
 /test-output
+/build
+
+.classpath
+.project
