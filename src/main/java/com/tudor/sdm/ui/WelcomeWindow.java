@@ -48,7 +48,7 @@ public class WelcomeWindow {
 		log.debug("Adding welcome window buttons...");
 		JPanel panel = new JPanel();
 		window.getContentPane().add(panel);
-		JButton btnManageClients = new JButton(Language.get().getString(StringNames.BTN_MANAGE_CLIENTS_LABEL));
+		JButton btnManageClients =  UIElementGenerator.createJButton(Language.get().getString(StringNames.BTN_MANAGE_CLIENTS_LABEL));
 		btnManageClients.setBounds(10, 20, 150, 30);
 		
 		btnManageClients.addActionListener(new ActionListener() {
@@ -71,13 +71,9 @@ public class WelcomeWindow {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new SportsSessionListView();
+				new SportsSessionListView(window);
 			}
 		});
 		mnuAdminMenu.add(mniListSportsSessionTypes);
 	}
-
-	
-
-
 }
