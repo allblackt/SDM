@@ -1,25 +1,14 @@
 package com.tudor.sdm.ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import org.apache.log4j.Logger;
-
 import com.tudor.sdm.Constants;
 import com.tudor.sdm.Constants.StringNames;
 import com.tudor.sdm.Language;
-import javax.swing.JToolBar;
-import java.awt.BorderLayout;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
+import org.apache.log4j.Logger;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class WelcomeWindow {
@@ -37,11 +26,11 @@ public class WelcomeWindow {
 		window.setTitle(Language.get().getString(Constants.StringNames.TITLE));
 		window.setSize(300, 200);
 		window.setLocationRelativeTo(null);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
 		addButtons();
-		
-		window.setVisible(true);
+
+        window.setVisible(true);
 	}
 	
 	private void addButtons() {
