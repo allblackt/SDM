@@ -17,6 +17,8 @@
 	<string name="lbl_sports_session_name">Name</string>
 	<string name="lbl_sports_session_duration">Duration(min)</string>
 	<string name="lbl_sports_session_price">Price</string>
+	<string name="lbl_loading_animation_text">Loading...</string>
+
 	
 	
 	<!-- Window titles -->

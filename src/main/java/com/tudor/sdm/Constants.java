@@ -54,6 +54,7 @@ public class Constants {
 		LBL_SPORTS_SESSION_NAME("lbl_sports_session_name"),
 		LBL_SPORTS_SESSION_DURATION("lbl_sports_session_duration"),
 		LBL_SPORTS_SESSION_PRICE("lbl_sports_session_price"),
+        LBL_LOADING_ANIMATION("lbl_loading_animation_text"),
 		
 		// Table columns
 		TBL_COLUMN_ABLES_LIST_SPORTS_SESSIONS("tbl_column_ables_list_sports_sessions"),
@@ -64,8 +65,9 @@ public class Constants {
 		ERR_MAXSESSIONS_MUST_BE_GREATER_THAN_REMAININGSESSIONS("err_maxsessions_must_be_greater_than_remainingsessions"),
 		ERR_MAXSESSIONS_MUST_BE_GREATER_THAN_ZERO("err_maxsessions_must_be_greater_than_zero"),
 		ERR_REMAININGSESSIONS_MUST_BE_A_POSITIVE_NUMBER("err_remainingsessions_must_be_a_positive_number");
-		String stringName;
-		
+
+        String stringName;
+
 		private StringNames(String stringName) {
 			this.stringName = stringName;
 		}
