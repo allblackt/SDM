@@ -33,7 +33,7 @@ public class SportsSessionTest {
     	emf = null;
     }
 	
-	@Test(dataProvider="getSingleSportsSession", dataProviderClass=SportsSessionDataProvider.class)
+	@Test(dataProvider="getTwoSportsSession", dataProviderClass=SportsSessionDataProvider.class)
 	public void addNewSportsSession(SportsSession session) {
 		this.session = SportsSessionDAO.get().add(session);
 	}
