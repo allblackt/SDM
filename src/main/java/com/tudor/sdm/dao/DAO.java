@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
 
@@ -91,22 +93,35 @@ public abstract class DAO<T , ID> implements IDAO<T, ID> {
 	
 	@Override
 	public List<T> getAll() {
-		EntityManager em = null;
-		try {
-			em = EMF.get().createEntityManager();
-			CriteriaBuilder cb = em.getCriteriaBuilder();
-			CriteriaQuery<T> cq = cb.createQuery(clazz);
-			cq.from(clazz);
-			TypedQuery<T> tq = em.createQuery(cq);
-			return tq.getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		} finally {
-			if (em != null) {
-				em.clear();
-				em.close();
-			}
-		}
+		return getAll(null, null);
 	}
+
+    @Override
+    public List<T> getAll(String orderByColumn, Boolean asc) {
+        EntityManager em = null;
+        try {
+            em = EMF.get().createEntityManager();
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<T> cq = cb.createQuery(clazz);
+            Root<T> root = cq.from(clazz);
+
+            if (orderByColumn != null) {
+                cq.orderBy(
+                        asc != null && asc == true ?
+                                cb.asc(root.get(orderByColumn)) : cb.desc(root.get(orderByColumn))
+                );
+            }
+
+            TypedQuery<T> tq = em.createQuery(cq);
+            return tq.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (em != null) {
+                em.clear();
+                em.close();
+            }
+        }
+    }
 }
