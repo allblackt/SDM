@@ -40,15 +40,21 @@ public class SportsSessionTest {
 	
 	@Test(dependsOnMethods={"addNewSportsSession"})
 	public void getSportsSessionById() {
-		SportsSession s = SportsSessionDAO.get().getById(1L);
+		SportsSession s = SportsSessionDAO.get().getById(2L);
 		Assert.assertEquals(s, session);
 	}
 	
 	@Test(dependsOnMethods={"addNewSportsSession"})
-	public void getAllSportsSessionBy() {
+	public void getAllSportsSessions() {
 		List<SportsSession> s = SportsSessionDAO.get().getAll();
-		Assert.assertEquals(s.size(), 1);
+		Assert.assertEquals(s.size(), 2);
 	}
+
+    @Test(dependsOnMethods={"addNewSportsSession"})
+    public void getAllSportsSessionsOrderBy() {
+        List<SportsSession> s = SportsSessionDAO.get().getAll("id", false);
+        Assert.assertEquals(s.get(0).getId(), new Long(2));
+    }
 
 
 }
