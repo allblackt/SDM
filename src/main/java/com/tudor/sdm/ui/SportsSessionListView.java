@@ -20,7 +20,7 @@ public class SportsSessionListView {
     private JDialog     dialog;
     private	JTable		table;
     private JScrollPane scrollPane;
-    private List<Long> idViewIndexMap = null;
+    private List<Long> idIndexMap = null;
     private ActionListener editButtonActionListener = setEditButtonActionListener();
 
     JLabel loadingAnimation = null;
@@ -64,13 +64,13 @@ public class SportsSessionListView {
         btnCancel.setBounds(761, 86, 117, 25);
         dialog.getContentPane().add(btnCancel);
 
-        showExistingData();
+        addTableToView();
 	}
 
-    private void showExistingData() {
-        idViewIndexMap = new ArrayList<>();
+    private void addTableToView() {
+        idIndexMap = new ArrayList<>();
 
-        String[] columnNames = Language.get().getString(StringNames.TBL_COLUMN_ABLES_LIST_SPORTS_SESSIONS).split(",");
+        String[] columnNames = Language.get().getString(StringNames.TBL_COLUMN_TABLES_LIST_SPORTS_SESSIONS).split(",");
 
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columnNames);
@@ -84,15 +84,17 @@ public class SportsSessionListView {
     }
 
     private void reloadData() throws IllegalStateException{
-        idViewIndexMap.clear();
+        idIndexMap.clear();
         if(table == null || table.getModel() == null) {
             throw new IllegalStateException();
         }
         DefaultTableModel model = (DefaultTableModel)table.getModel();
         //clear the rows
         model.setRowCount(0);
-        for (SportsSession sps : SportsSessionDAO.get().getAll()) {
-            idViewIndexMap.add(sps.getId());
+
+        //populate with data - get it sorted by name
+        for (SportsSession sps : SportsSessionDAO.get().getAll("name", true)) {
+            idIndexMap.add(sps.getId());
             model.addRow(new Object[]{
                     sps.getName(),
                     sps.getDuration(),
@@ -113,7 +115,7 @@ public class SportsSessionListView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SportsSession selectedSportsSession = SportsSessionDAO.get()
-                                                        .getById(idViewIndexMap.get(table.getSelectedRow()));
+                                                        .getById(idIndexMap.get(table.getSelectedRow()));
                 System.out.println(selectedSportsSession.toString());
 
                 new AddEditSportsSession(dialog, selectedSportsSession)
