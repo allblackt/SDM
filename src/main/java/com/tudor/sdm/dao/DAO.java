@@ -4,10 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Order;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 
 import org.apache.log4j.Logger;
 
@@ -108,10 +105,10 @@ public abstract class DAO<T , ID> implements IDAO<T, ID> {
             if (orderByColumn != null) {
                 cq.orderBy(
                         asc != null && asc == true ?
-                                cb.asc(root.get(orderByColumn)) : cb.desc(root.get(orderByColumn))
+                                cb.asc(cb.upper(root.get(orderByColumn).as(String.class))):
+                                cb.desc(cb.upper(root.get(orderByColumn).as(String.class)))
                 );
             }
-
             TypedQuery<T> tq = em.createQuery(cq);
             return tq.getResultList();
         } catch (Exception e) {
