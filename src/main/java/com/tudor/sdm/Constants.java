@@ -37,7 +37,8 @@ public class Constants {
 		WINDOW_MANAGE_CLIENTS_TITLE("window_manage_clients_title"),
 		WINDOW_TITLE_LIST_SPORTS_SESSIONS("window_title_list_sports_sessions"),
 		WINDOW_TITLE_ADD_EDIT_SPORTS_SESSIONS("window_title_add_edit_sports_sessions"),
-		
+		WINDOW_TITLE_ADD_EDIT_CLIENT("window_title_add_edit_client"),
+
 		
 		// Button labels
 		BTN_MANAGE_CLIENTS_LABEL("btn_manage_clients_label"),
@@ -57,8 +58,9 @@ public class Constants {
         LBL_LOADING_ANIMATION("lbl_loading_animation_text"),
 		
 		// Table columns
-		TBL_COLUMN_ABLES_LIST_SPORTS_SESSIONS("tbl_column_ables_list_sports_sessions"),
-		
+		TBL_COLUMN_TABLES_LIST_SPORTS_SESSIONS("tbl_column_tables_list_sports_sessions"),
+		TBL_COLUMN_TABLES_LIST_CLIENTS("tbl_column_tables_list_clients"),
+
 		// Errors
 		ERR_NOT_ENOUGH_SESSIONS_LEFT_ON_PASS("err_not_enough_sessions_left_on_pass"),
 		ERR_INVALID_DATA_INPUTED_FOR_SPORTS_SESSION("err_invalid_data_inputed_for_sports_session"),

@@ -7,8 +7,10 @@
 	<string name="btn_generic_cancel_label">Cancel</string>
 	<string name="btn_manage_clients_label">Manage Clients</string>
 	<string name="btn_add_new_sports_session_label">Add new sports session</string>
-	<string name="btn_edit_sports_session_label">Modify sports session</string>
-	
+    <string name="btn_edit_sports_session_label">Modify sports session</string>
+    <string name="btn_add_new_client_label">Add new client</string>
+    <string name="btn_edit_client_label">Modify client</string>
+
 	<!-- Menu items -->
 	<string name="mnu_admin_label">Administration</string>
 	<string name="mnu_list_sports_session_types">List sports session types</string>
@@ -25,10 +27,12 @@
 	<string name="window_title_list_sports_sessions">Sports sessions list view</string>
 	<string name="window_title_add_edit_sports_sessions">Add/Edit Sports Sessions</string>
 	<string name="window_manage_clients_title">Manage Clients</string>
-	
+    <string name="window_title_add_edit_client">Add/Edit Client</string>
+
 	<!-- Table columns -->
-	<string name="tbl_column_ables_list_sports_sessions">Name,Duration,Price</string>
-	
+    <string name="tbl_column_tables_list_sports_sessions">Name,Duration,Price</string>
+    <string name="tbl_column_tables_list_clients">Name,City,District,Street,StreetNo,MiscAddress,Country,IBAN,NumericalCode</string>
+
 	<!-- Error strings -->
 	<string name="err_not_enough_sessions_left_on_pass">The client doesn't have enough sessions on their pass.</string>
 	<string name="err_invalid_data_inputed_for_sports_session">Invalid data entered for the Sports Session!</string>
