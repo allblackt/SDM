@@ -15,10 +15,22 @@
 	<string name="mnu_admin_label">Administration</string>
 	<string name="mnu_list_sports_session_types">List sports session types</string>
 	
-	<!-- Generic labels throughout the application -->
+	<!-- Labels used throughout the application -->
+    <!-- Sports session -->
 	<string name="lbl_sports_session_name">Name</string>
 	<string name="lbl_sports_session_duration">Duration(min)</string>
 	<string name="lbl_sports_session_price">Price</string>
+
+    <!-- Client -->
+    <string name="lbl_client_iban">IBAN</string>
+    <string name="lbl_client_name">Name</string>
+    <string name="lbl_client_country">Country</string>
+    <string name="lbl_client_city">City/Town</string>
+    <string name="lbl_client_address">Address</string>
+    <string name="lbl_client_district">District</string>
+    <string name="lbl_client_phone_number">Phone No.</string>
+
+    <!-- Can't reaaaally fit them in any other category -->
 	<string name="lbl_loading_animation_text">Loading...</string>
 
 	

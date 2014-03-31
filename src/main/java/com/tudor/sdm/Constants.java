@@ -51,10 +51,21 @@ public class Constants {
 		MNU_ADMIN_LABEL("mnu_admin_label"),
 		MNU_LIST_SPORTS_SESSION_TYPES("mnu_list_sports_session_types"),
 		
-		// Generic labels
+		// Sports session labels
 		LBL_SPORTS_SESSION_NAME("lbl_sports_session_name"),
 		LBL_SPORTS_SESSION_DURATION("lbl_sports_session_duration"),
 		LBL_SPORTS_SESSION_PRICE("lbl_sports_session_price"),
+
+        //Client labels
+        LBL_CLIENT_IBAN("lbl_client_iban"),
+        LBL_CLIENT_COUNTRY("lbl_client_country"),
+        LBL_CLIENT_CITY("lbl_client_city"),
+        LBL_CLIENT_NAME("lbl_client_name"),
+        LBL_CLIENT_ADDRESS("lbl_client_address"),
+        LBL_CLIENT_DISTRICT("lbl_client_district"),
+        LBL_CLIENT_PHONE_NUMBER("lbl_client_phone_number"),
+
+        //Generic labels
         LBL_LOADING_ANIMATION("lbl_loading_animation_text"),
 		
 		// Table columns
