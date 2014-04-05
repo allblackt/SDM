@@ -4,6 +4,9 @@
 #eclipse settings
 /.settings
 
+#gradle
+.gradle
+
 #H2 databases
 /db/*.db
 
