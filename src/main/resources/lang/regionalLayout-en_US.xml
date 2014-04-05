@@ -1,0 +1,15 @@
+<districts>
+    <district name="Bucharest">
+        <city name="Sector 1"></city>
+        <city name="Sector 2"></city>
+        <city name="Sector 3"></city>
+        <city name="Sector 4"></city>
+        <city name="Sector 5"></city>
+        <city name="Sector 6"></city>
+    </district>
+    <district name="Constanta">
+        <city name="Constanta"></city>
+        <city name="Mangalia"></city>
+        <city name="Navodari"></city>
+    </district>
+</districts>
