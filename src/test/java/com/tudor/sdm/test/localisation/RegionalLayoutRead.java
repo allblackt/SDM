@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public class RegionalLayoutRead {
 
     @Test
     public void readAllLayouts() {
-        Map<String, List<String>> districtLayout = rl.getDistrictLayout();
+        LinkedHashMap<String, List<String>> districtLayout = rl.getDistrictLayout();
         Assert.assertNotEquals(districtLayout, null);
         Assert.assertNotEquals(districtLayout.size(), 0);
         for(Map.Entry<String, List<String>> entry : districtLayout.entrySet()) {
@@ -50,5 +51,13 @@ public class RegionalLayoutRead {
 
         int i = allCountries.indexOf(defaultCountry);
         Assert.assertNotEquals(i, -1);
+    }
+
+    @Test(dependsOnMethods = {"readAllLayouts"})
+    public void readDefaultDistrict() {
+        String defaultDistrict = rl.getDefaultDistrict();
+        LinkedHashMap<String, List<String>> districtLayout = rl.getDistrictLayout();
+        Assert.assertNotEquals(defaultDistrict,null);
+        Assert.assertEquals(districtLayout.containsKey(defaultDistrict), true);
     }
 }

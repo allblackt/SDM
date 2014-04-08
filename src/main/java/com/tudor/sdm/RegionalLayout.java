@@ -13,10 +13,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by tudor on 4/4/14.
@@ -25,9 +22,10 @@ import java.util.Map;
 public class RegionalLayout {
     private static RegionalLayout instance = null;
 
-    private Map<String, List<String>> districtLayout = null;
+    private LinkedHashMap<String, List<String>> districtLayout = null;
     private List<String> countryList = null;
-    private String defaultCountry;
+    private String defaultCountry = null;
+    private String defaultDistrict = null;
 
     private static final Logger log = Logger.getLogger(RegionalLayout.class.getName());
 
@@ -50,18 +48,22 @@ public class RegionalLayout {
         return instance;
     }
 
-    public Map<String, List<String>> getDistrictLayout() {
-        return districtLayout;
+    public LinkedHashMap<String, List<String>> getDistrictLayout() {
+        return new LinkedHashMap<>(districtLayout);
     }
 
     public List<String> getCountryList() {
-        return countryList;
+        return new ArrayList<>(countryList);
     }
 
     public String getDefaultCountry() {
-        return defaultCountry;
+        return new String(defaultCountry);
     }
 
+
+    public String getDefaultDistrict() {
+        return new String(defaultDistrict);
+    }
 
     private void initRegionalLayoutMap() throws ParserConfigurationException, SAXException, IOException {
         File f = new File(getClass().getResource("/lang/regionalLayout-" + locale + ".xml").getFile());
@@ -83,10 +85,11 @@ public class RegionalLayout {
         districtLayout = readDistrictMapping(doc);
         countryList = readCountryList(doc);
         defaultCountry = readDefaultCountry(doc);
+        defaultDistrict = readDefaultDistrict(doc);
     }
 
-    private Map<String, List<String>> readDistrictMapping(Document doc) {
-        Map<String, List<String>> readLayout = new HashMap<>();
+    private LinkedHashMap<String, List<String>> readDistrictMapping(Document doc) {
+        LinkedHashMap<String, List<String>> readLayout = new LinkedHashMap<>();
         NodeList districts = doc.getElementsByTagName("district");
         if(districts != null) {
             for(int i=0; i < districts.getLength(); i++) {
@@ -121,5 +124,13 @@ public class RegionalLayout {
         defaultCountryName = defaultCountry.getFirstChild().getNodeValue();
         log.debug(String.format("Found default country %s", defaultCountryName));
         return new String(defaultCountryName.trim());
+    }
+
+    private String readDefaultDistrict(Document doc) throws UnsupportedEncodingException {
+        String defaultDistrictName = null;
+        Node defaultDistrict= doc.getElementsByTagName("defaultDistrict").item(0);
+        defaultDistrictName = defaultDistrict.getFirstChild().getNodeValue();
+        log.debug(String.format("Found default district %s", defaultDistrictName));
+        return new String(defaultDistrictName.trim());
     }
 }
