@@ -50,6 +50,9 @@ public class Client {
 	@Column(length = 255)
 	private String miscAddress;
 
+    @Column(length = 50, nullable = false)
+    private String phoneNumber;
+
 	public static class ClientBuilder {
 		private String name;
 		private String iban;
@@ -60,6 +63,7 @@ public class Client {
 		private String street;
 		private String streetNo;
 		private String miscAddress;
+        private String phoneNumber;
 
 		public ClientBuilder name(String name) {
 			this.name = name;
@@ -106,6 +110,11 @@ public class Client {
 			return this;
 		}
 
+        public ClientBuilder phoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+            return this;
+        }
+
 		public Client build() {
 			Client client = new Client();
 			client.name = name;
@@ -117,6 +126,7 @@ public class Client {
 			client.street = street;
 			client.streetNo = streetNo;
 			client.miscAddress = miscAddress;
+            client.phoneNumber = phoneNumber;
 			return client;
 		}
 	}
