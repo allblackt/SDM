@@ -29,6 +29,7 @@
     <string name="lbl_client_address">Address</string>
     <string name="lbl_client_district">District</string>
     <string name="lbl_client_phone_number">Phone No.</string>
+    <string name="lbl_client_personal_number">Personal No.</string>
 
     <!-- Can't reaaaally fit them in any other category -->
 	<string name="lbl_loading_animation_text">Loading...</string>
@@ -43,7 +44,7 @@
 
 	<!-- Table columns -->
     <string name="tbl_column_tables_list_sports_sessions">Name,Duration,Price</string>
-    <string name="tbl_column_tables_list_clients">Name,City,District,Street,StreetNo,MiscAddress,Country,IBAN,NumericalCode</string>
+    <string name="tbl_column_tables_list_clients">Name,PhoneNo,City,District,Street,StreetNo,MiscAddress,Country,IBAN,NumericalCode</string>
 
 	<!-- Error strings -->
 	<string name="err_not_enough_sessions_left_on_pass">The client doesn't have enough sessions on their pass.</string>
