@@ -25,7 +25,8 @@ public class ErrorMessage extends JDialog {
 		if(message == null) {
 			message = "Null pointer error";
 		}
-		
+
+        setModal(true);
 		setAlwaysOnTop(true);
 		setBounds(100, 100, 450, 300);
 		setLocationRelativeTo(getParent());
