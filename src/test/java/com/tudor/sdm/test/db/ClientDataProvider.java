@@ -11,7 +11,8 @@ public class ClientDataProvider {
 		return new Object[][] {
 			{ new Client.ClientBuilder().name("Ion Popescu")
 				.country("Romania").city("Bucharest").street("Bulevardul Unirii")
-				.streetNo("319 C").miscAddress("Cladirea Trust Center").build()  }	
+				.streetNo("319 C").miscAddress("Cladirea Trust Center")
+                .phoneNumber("0000000000").build()  }
 		};
 	}
 }
