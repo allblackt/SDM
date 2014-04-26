@@ -1,8 +1,12 @@
 #java compile path
 /bin
+/classes
 
 #eclipse settings
 /.settings
+
+#intellij idea settings
+.idea
 
 #gradle
 .gradle
