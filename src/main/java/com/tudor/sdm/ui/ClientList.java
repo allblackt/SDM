@@ -34,7 +34,7 @@ public class ClientList {
         addTableToView();
 
         JButton btnAddSportsSession =  UIElementGenerator.createJButton(Language.get()
-                .getString(StringNames.BTN_ADD_NEW_SPORTS_SESSION_LABEL));
+                .getString(StringNames.BTN_ADD_NEW_CLIENT_LABEL));
         btnAddSportsSession.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new AddEditClient(dialog).addWindowAdapter(new WindowAdapter() {
@@ -50,7 +50,7 @@ public class ClientList {
         dialog.getContentPane().add(btnAddSportsSession);
 
         JButton btnEditSportsSession = UIElementGenerator.createJButton(Language.get()
-                .getString(StringNames.BTN_EDIT_SPORTS_SESSION_LABEL));
+                .getString(StringNames.BTN_EDIT_CLIENT_LABEL));
         btnEditSportsSession.addActionListener(editButtonActionListener());
         btnEditSportsSession.setBounds(861, 49, 117, 25);
         dialog.getContentPane().add(btnEditSportsSession);

@@ -43,6 +43,8 @@ public class Constants {
 		// Button labels
 		BTN_MANAGE_CLIENTS_LABEL("btn_manage_clients_label"),
 		BTN_ADD_NEW_SPORTS_SESSION_LABEL("btn_add_new_sports_session_label"),
+		BTN_ADD_NEW_CLIENT_LABEL("btn_add_new_client_label"),
+		BTN_EDIT_CLIENT_LABEL("btn_edit_client_label"),
 		BTN_EDIT_SPORTS_SESSION_LABEL("btn_edit_sports_session_label"),
 		BTN_GENERIC_SAVE_LABEL("btn_generic_save_label"),
 		BTN_GENERIC_CANCEL_LABEL("btn_generic_cancel_label"),
@@ -64,6 +66,7 @@ public class Constants {
         LBL_CLIENT_ADDRESS("lbl_client_address"),
         LBL_CLIENT_DISTRICT("lbl_client_district"),
         LBL_CLIENT_PHONE_NUMBER("lbl_client_phone_number"),
+        LBL_CLIENT_PERSONAL_NUMBER("lbl_client_personal_number"),
 
         //Generic labels
         LBL_LOADING_ANIMATION("lbl_loading_animation_text"),
