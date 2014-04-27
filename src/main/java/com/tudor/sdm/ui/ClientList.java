@@ -33,9 +33,9 @@ public class ClientList {
 
         addTableToView();
 
-        JButton btnAddSportsSession =  UIElementGenerator.createJButton(Language.get()
+        JButton btnAddClient =  UIElementGenerator.createJButton(Language.get()
                 .getString(StringNames.BTN_ADD_NEW_CLIENT_LABEL));
-        btnAddSportsSession.addActionListener(new ActionListener() {
+        btnAddClient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new AddEditClient(dialog).addWindowAdapter(new WindowAdapter() {
                     @Override
@@ -46,14 +46,14 @@ public class ClientList {
                 });
             }
         });
-        btnAddSportsSession.setBounds(861, 12, 117, 25);
-        dialog.getContentPane().add(btnAddSportsSession);
+        btnAddClient.setBounds(861, 12, 117, 25);
+        dialog.getContentPane().add(btnAddClient);
 
-        JButton btnEditSportsSession = UIElementGenerator.createJButton(Language.get()
+        JButton btnEditClient = UIElementGenerator.createJButton(Language.get()
                 .getString(StringNames.BTN_EDIT_CLIENT_LABEL));
-        btnEditSportsSession.addActionListener(editButtonActionListener());
-        btnEditSportsSession.setBounds(861, 49, 117, 25);
-        dialog.getContentPane().add(btnEditSportsSession);
+        btnEditClient.addActionListener(editButtonActionListener());
+        btnEditClient.setBounds(861, 49, 117, 25);
+        dialog.getContentPane().add(btnEditClient);
 
         JButton btnCancel = UIElementGenerator.createCancelButton(dialog);
         btnCancel.setBounds(861, 86, 117, 25);
@@ -63,7 +63,18 @@ public class ClientList {
 	}
 
     private ActionListener editButtonActionListener() {
-        return null;
+        return new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Client client = ClientDAO.get().getById(idIndexMap.get(table.getSelectedRow()));
+                new AddEditClient(dialog, client).addWindowAdapter(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        super.windowClosed(e);
+                        reloadData();
+                    }
+                });
+            }
+        };
     }
 
 	//TODO: Move this to be on a SwingWorker
@@ -96,10 +107,10 @@ public class ClientList {
             model.addRow(new Object[] {
                     cli.getName(),
                     cli.getPhoneNumber(),
-                    cli.getCity(),
-                    cli.getDistrict(),
-                    cli.getMiscAddress(),
                     cli.getCountry(),
+                    cli.getDistrict(),
+                    cli.getCity(),
+                    cli.getMiscAddress(),
                     cli.getIban(),
                     cli.getPersonalnumber()
             });

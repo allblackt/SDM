@@ -80,7 +80,9 @@ public class Constants {
 		ERR_INVALID_DATA_INPUTED_FOR_SPORTS_SESSION("err_invalid_data_inputed_for_sports_session"),
 		ERR_MAXSESSIONS_MUST_BE_GREATER_THAN_REMAININGSESSIONS("err_maxsessions_must_be_greater_than_remainingsessions"),
 		ERR_MAXSESSIONS_MUST_BE_GREATER_THAN_ZERO("err_maxsessions_must_be_greater_than_zero"),
-		ERR_REMAININGSESSIONS_MUST_BE_A_POSITIVE_NUMBER("err_remainingsessions_must_be_a_positive_number");
+		ERR_REMAININGSESSIONS_MUST_BE_A_POSITIVE_NUMBER("err_remainingsessions_must_be_a_positive_number"),
+        ERR_CLIENT_ADD_EDIT_NAME_INVALID("err_client_add_edit_name_invalid"),
+        ERR_CLIENT_ADD_EDIT_PHONE_NO_INVALID("err_client_add_edit_phone_no_invalid");
 
         String stringName;
 

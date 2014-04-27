@@ -3,11 +3,11 @@ package com.tudor.sdm.ui;
 import com.tudor.sdm.Constants;
 import com.tudor.sdm.Language;
 import com.tudor.sdm.RegionalLayout;
+import com.tudor.sdm.dao.ClientDAO;
 import com.tudor.sdm.entity.Client;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,9 +20,11 @@ import java.awt.event.WindowAdapter;
 public class AddEditClient {
     private JDialog dialog;
     private Client client;
-    JButton btnSave;
-    JButton btnCancel;
-    JDialog parent;
+    private JButton btnSave;
+    private JButton btnCancel;
+    private JDialog parent;
+    private String errorMessage;
+
 
     private JLabel lblNameLabel;
     private JLabel lblPhoneNumber;
@@ -46,7 +48,12 @@ public class AddEditClient {
     private static final Logger log = Logger.getLogger(AddEditClient.class.getName());
 
     public AddEditClient(JDialog parent) {
+        this(parent, null);
+    }
+
+    public AddEditClient(JDialog parent, Client client) {
         this.parent = parent;
+        this.client = client;
         initDialog();
     }
 
@@ -63,6 +70,10 @@ public class AddEditClient {
         addButtons();
         addLabels();
         addInputs();
+
+        if (client != null) {
+            populateInputs();
+        }
 
         dialog.setVisible(true);
         log.debug("Done initializing the dialog...");
@@ -155,6 +166,30 @@ public class AddEditClient {
 
     }
 
+    private void populateInputs() {
+        txtName.setText(client.getName());
+        txtPhoneNumber.setText(client.getPhoneNumber());
+        cobCountry.setSelectedItem(client.getCountry());
+        cobDistrict.setSelectedItem(client.getDistrict());
+
+        if (client.getCity() != null) {
+            cobCity.setSelectedItem(client.getCity());
+        }
+
+        if (client.getMiscAddress() != null) {
+            txtMiscAddress.setText(client.getMiscAddress());
+        }
+
+        if (client.getPersonalnumber() != null) {
+            txtPersonalNumber.setText(client.getPersonalnumber());
+        }
+
+        if (client.getIban() != null) {
+            txtIban.setText(client.getIban());
+        }
+
+    }
+
     private void loadCities() {
         cobCity.removeAllItems();
 
@@ -166,12 +201,12 @@ public class AddEditClient {
 
     private void addButtons() {
         log.debug("Adding buttons to the dialog...");
-        btnSave = new JButton(Language.get().getString(Constants.StringNames.BTN_GENERIC_SAVE_LABEL));
+        btnSave = UIElementGenerator.createJButton(Language.get().getString(Constants.StringNames.BTN_GENERIC_SAVE_LABEL));
         btnSave.setBounds(420, 5, 117, 25);
         dialog.getContentPane().add(btnSave);
         btnSave.addActionListener(saveButtonActionListener());
 
-        btnCancel = new JButton(Language.get().getString(Constants.StringNames.BTN_GENERIC_CANCEL_LABEL));
+        btnCancel = UIElementGenerator.createJButton(Language.get().getString(Constants.StringNames.BTN_GENERIC_CANCEL_LABEL));
         btnCancel.setBounds(420, 35, 117, 25);
         dialog.getContentPane().add(btnCancel);
         btnCancel.addActionListener(new ActionListener() {
@@ -185,7 +220,66 @@ public class AddEditClient {
     }
 
     private ActionListener saveButtonActionListener() {
-        return null;
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(isInputValid()) {
+                    Client c = readClientFronUserInput();
+                    if (c.getId() != null && c.getId() > 0) {
+                        ClientDAO.get().save(c);
+                    } else {
+                        ClientDAO.get().add(c);
+                    }
+                    dialog.dispose();
+                } else {
+                    new ErrorMessage(errorMessage);
+                }
+            }
+        };
+    }
+
+    /**
+     * Reads the Client from the inputed data in the UI.
+     * If the UI was instanced with an existing Client parameter, the ID is preserved.
+     * @return
+     * The fully formed Client object with all the relevant properties of the UI.
+     */
+    private Client readClientFronUserInput() {
+        Client c = new Client.ClientBuilder().name(txtName.getText()).phoneNumber(txtPhoneNumber.getText())
+                .country(cobCountry.getSelectedItem().toString()).district(cobDistrict.getSelectedItem().toString()).build();
+
+        if (cobCity.getSelectedItem().toString().trim().length() > 0) {
+            c.setCity(cobCity.getSelectedItem().toString().trim());
+        }
+
+        if (txtMiscAddress.getText().trim().length() > 0) {
+            c.setMiscAddress(txtMiscAddress.getText().trim());
+        }
+
+        if (txtIban.getText().trim().length() > 0) {
+            c.setIban(txtIban.getText().trim());
+        }
+
+        if (txtPersonalNumber.getText().trim().length() > 0) {
+            c.setPersonalnumber(txtPersonalNumber.getText().trim());
+        }
+
+        if (client != null && client.getId() != null && client.getId() > 0) {
+            c.setId(client.getId());
+        }
+        return c;
+    }
+
+    private boolean isInputValid() {
+        if(txtName.getText().trim().length() < 3) {
+            errorMessage = Language.get().getString(Constants.StringNames.ERR_CLIENT_ADD_EDIT_NAME_INVALID);
+            return false;
+        }
+        if (txtPhoneNumber.getText().length() < 5) {
+            errorMessage = Language.get().getString(Constants.StringNames.ERR_CLIENT_ADD_EDIT_PHONE_NO_INVALID);
+            return false;
+        }
+        return true;
     }
 
     public void addWindowAdapter(WindowAdapter windowAdapter) {
