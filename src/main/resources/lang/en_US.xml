@@ -44,7 +44,7 @@
 
 	<!-- Table columns -->
     <string name="tbl_column_tables_list_sports_sessions">Name,Duration,Price</string>
-    <string name="tbl_column_tables_list_clients">Name,PhoneNo,City,District,Street,StreetNo,MiscAddress,Country,IBAN,NumericalCode</string>
+    <string name="tbl_column_tables_list_clients">Name,PhoneNo,Country,District,City,MiscAddress,IBAN,NumericalCode</string>
 
 	<!-- Error strings -->
 	<string name="err_not_enough_sessions_left_on_pass">The client doesn't have enough sessions on their pass.</string>
@@ -52,4 +52,7 @@
 	<string name="err_maxsessions_must_be_greater_than_remainingsessions">The number of sessions must be greater than the remaining number of sessions.</string>
 	<string name="err_maxsessions_must_be_greater_than_zero">The number of sessions must be greater than zero.</string>
 	<string name="err_remainingsessions_must_be_a_positive_number">The number of remaining sessions must be a positive number.</string>
+	<string name="err_client_add_edit_name_invalid">Client's name must have 3 or more characters.</string>
+	<string name="err_client_add_edit_phone_no_invalid">Client's phone number must have 5 or more characters.</string>
+
 </strings>

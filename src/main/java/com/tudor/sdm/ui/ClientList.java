@@ -95,10 +95,9 @@ public class ClientList {
             idIndexMap.add(cli.getId());
             model.addRow(new Object[] {
                     cli.getName(),
+                    cli.getPhoneNumber(),
                     cli.getCity(),
                     cli.getDistrict(),
-                    cli.getStreet(),
-                    cli.getStreetNo(),
                     cli.getMiscAddress(),
                     cli.getCountry(),
                     cli.getIban(),

@@ -35,19 +35,13 @@ public class Client {
 	@Column(length = 50, nullable = false)
 	private String country;
 
-	@Column(length = 50, nullable = false)
-	private String city;
+    @Column(length = 50)
+    private String city;
 
-	@Column(length = 50)
+	@Column(length = 50, nullable = false)
 	private String district;
 
-	@Column(length = 255)
-	private String street;
-
-	@Column(length = 20)
-	private String streetNo;
-
-	@Column(length = 255)
+	@Column(length = 500)
 	private String miscAddress;
 
     @Column(length = 50, nullable = false)
@@ -60,8 +54,6 @@ public class Client {
 		private String country;
 		private String city;
 		private String district;
-		private String street;
-		private String streetNo;
 		private String miscAddress;
         private String phoneNumber;
 
@@ -95,16 +87,6 @@ public class Client {
 			return this;
 		}
 
-		public ClientBuilder street(String street) {
-			this.street = street;
-			return this;
-		}
-
-		public ClientBuilder streetNo(String streetNo) {
-			this.streetNo = streetNo;
-			return this;
-		}
-
 		public ClientBuilder miscAddress(String miscAddress) {
 			this.miscAddress = miscAddress;
 			return this;
@@ -123,8 +105,6 @@ public class Client {
 			client.country = country;
 			client.city = city;
 			client.district = district;
-			client.street = street;
-			client.streetNo = streetNo;
 			client.miscAddress = miscAddress;
             client.phoneNumber = phoneNumber;
 			return client;
