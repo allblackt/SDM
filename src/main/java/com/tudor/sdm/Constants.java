@@ -76,6 +76,7 @@ public class Constants {
 		TBL_COLUMN_TABLES_LIST_CLIENTS("tbl_column_tables_list_clients"),
 
 		// Errors
+        ERR_APPLICATION_ALLREADY_RUNNING("err_application_allready_running"),
 		ERR_NOT_ENOUGH_SESSIONS_LEFT_ON_PASS("err_not_enough_sessions_left_on_pass"),
 		ERR_INVALID_DATA_INPUTED_FOR_SPORTS_SESSION("err_invalid_data_inputed_for_sports_session"),
 		ERR_MAXSESSIONS_MUST_BE_GREATER_THAN_REMAININGSESSIONS("err_maxsessions_must_be_greater_than_remainingsessions"),

@@ -1,5 +1,6 @@
 package com.tudor.sdm;
 
+import com.tudor.sdm.ui.ErrorMessage;
 import com.tudor.sdm.ui.WelcomeWindow;
 import org.apache.log4j.Logger;
 
@@ -18,6 +19,7 @@ public class SDM {
                 }
             });
         } else {
+            new ErrorMessage(Language.get().getString(Constants.StringNames.ERR_APPLICATION_ALLREADY_RUNNING));
             log.info("Application is already running...");
         }
 	}

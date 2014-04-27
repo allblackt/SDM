@@ -47,6 +47,7 @@
     <string name="tbl_column_tables_list_clients">Name,PhoneNo,Country,District,City,MiscAddress,IBAN,NumericalCode</string>
 
 	<!-- Error strings -->
+	<string name="err_application_allready_running">Application is already running.</string>
 	<string name="err_not_enough_sessions_left_on_pass">The client doesn't have enough sessions on their pass.</string>
 	<string name="err_invalid_data_inputed_for_sports_session">Invalid data entered for the Sports Session!</string>
 	<string name="err_maxsessions_must_be_greater_than_remainingsessions">The number of sessions must be greater than the remaining number of sessions.</string>
