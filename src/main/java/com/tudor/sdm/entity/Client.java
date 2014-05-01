@@ -17,7 +17,7 @@ import lombok.Setter;
 @Data
 @Getter(AccessLevel.PUBLIC)
 @Setter(AccessLevel.PUBLIC)
-public class Client {
+public class Client implements Reserver {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
