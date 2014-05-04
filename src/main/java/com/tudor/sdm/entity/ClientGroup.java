@@ -22,6 +22,11 @@ public class ClientGroup implements Reserver {
 
     @Column(length = 255)
     private String name;
+
+    @OneToMany
     private List<Client> members;
+
+    @JoinColumn(name = "trainer")
+    @ManyToOne
     private Trainer trainer;
 }
