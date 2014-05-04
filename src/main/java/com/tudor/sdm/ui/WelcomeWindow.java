@@ -29,6 +29,7 @@ public class WelcomeWindow {
 		window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
 		addButtons();
+        addMenuBarAndItems();
 
         window.setVisible(true);
 	}
@@ -48,21 +49,57 @@ public class WelcomeWindow {
 			}
 		});
 		panel.add(btnManageClients);
-		
-		JMenuBar menuBar = new JMenuBar();
-		window.getContentPane().add(menuBar, BorderLayout.NORTH);
-		
-		JMenu mnuAdminMenu = new JMenu(Language.get().getString(StringNames.MNU_ADMIN_LABEL));
-		menuBar.add(mnuAdminMenu);
-		
-		JMenuItem mniListSportsSessionTypes = new JMenuItem(Language.get().getString(StringNames.MNU_LIST_SPORTS_SESSION_TYPES));
-		mniListSportsSessionTypes.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new SportsSessionListView(window);
-			}
-		});
-		mnuAdminMenu.add(mniListSportsSessionTypes);
+
+        //TODO: Put a string for this
+        JButton btnShowReservations = UIElementGenerator.createJButton("Reservations");
+        btnShowReservations.setBounds(10, 20, 180, 30);
+
+        btnShowReservations.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new CalendarUI();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+
+        panel.add(btnShowReservations);
 	}
+
+    private void addMenuBarAndItems() {
+        JMenuBar menuBar = new JMenuBar();
+        window.getContentPane().add(menuBar, BorderLayout.NORTH);
+
+        JMenu mnuAdminMenu = new JMenu(Language.get().getString(StringNames.MNU_ADMIN_LABEL));
+        menuBar.add(mnuAdminMenu);
+
+        JMenuItem mniListSportsSessionTypes = new JMenuItem(Language.get().getString(StringNames.MNU_LIST_SPORTS_SESSION_TYPES));
+        mniListSportsSessionTypes.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SportsSessionListView(window);
+            }
+        });
+        mnuAdminMenu.add(mniListSportsSessionTypes);
+
+        JMenu mnuClientMenu = new JMenu(Language.get().getString(StringNames.MNU_ADMIN_LABEL));
+        menuBar.add(mnuAdminMenu);
+
+        JMenu mnuDataManagement = new JMenu("DATA MANAGEMENT");
+        JMenuItem mniViewAddEditTrainers = new JMenuItem(Language.get().getString(
+                StringNames.MNU_VIEW_ADD_EDIT_TRAINER
+        ));
+        mniViewAddEditTrainers.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new AddEditListTrainer();
+            }
+        });
+        mnuDataManagement.add(mniViewAddEditTrainers);
+
+        menuBar.add(mnuDataManagement);
+    }
 }
