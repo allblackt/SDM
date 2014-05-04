@@ -9,7 +9,10 @@
 	<string name="btn_add_new_sports_session_label">Add new sports session</string>
     <string name="btn_edit_sports_session_label">Modify sports session</string>
     <string name="btn_add_new_client_label">Add new client</string>
-    <string name="btn_edit_client_label">Modify client</string>
+    <string name="mnu_client_management">Manage Clients</string>
+    <string name="mnu_item_add_edit_client">Add / edit clients</string>
+    <string name="mnu_add_edit_client_group">Add / edit client group</string>
+    <string name="mnu_view_add_edit_trainer">View/Add/Edit Trainers</string>
 
 	<!-- Menu items -->
 	<string name="mnu_admin_label">Administration</string>
@@ -31,6 +34,11 @@
     <string name="lbl_client_phone_number">Phone No.</string>
     <string name="lbl_client_personal_number">Personal No.</string>
 
+    <!-- Trainer -->
+    <string name="lbl_trainer_name">Name</string>
+    <string name="lbl_trainer_phone_number">Phone No.</string>
+
+
     <!-- Can't reaaaally fit them in any other category -->
 	<string name="lbl_loading_animation_text">Loading...</string>
 
@@ -41,10 +49,12 @@
 	<string name="window_title_add_edit_sports_sessions">Add/Edit Sports Sessions</string>
 	<string name="window_manage_clients_title">Manage Clients</string>
     <string name="window_title_add_edit_client">Add/Edit Client</string>
+    <string name="window_title_view_add_edit_trainer">View/Add/Edit Trainers</string>
 
 	<!-- Table columns -->
     <string name="tbl_column_tables_list_sports_sessions">Name,Duration,Price</string>
     <string name="tbl_column_tables_list_clients">Name,PhoneNo,Country,District,City,MiscAddress,IBAN,NumericalCode</string>
+    <string name="tbl_column_tables_list_trainers">Name,PhoneNo</string>
 
 	<!-- Error strings -->
 	<string name="err_application_allready_running">Application is already running.</string>
@@ -54,6 +64,7 @@
 	<string name="err_maxsessions_must_be_greater_than_zero">The number of sessions must be greater than zero.</string>
 	<string name="err_remainingsessions_must_be_a_positive_number">The number of remaining sessions must be a positive number.</string>
 	<string name="err_client_add_edit_name_invalid">Client's name must have 3 or more characters.</string>
-	<string name="err_client_add_edit_phone_no_invalid">Client's phone number must have 5 or more characters.</string>
+	<string name="err_trainer_add_edit_name_invalid">Trainer's name must have 3 or more characters.</string>
+	<string name="err_trainer_add_edit_phone_no_invalid">Trainer's phone number must have 5 or more characters.</string>
 
 </strings>

@@ -38,7 +38,7 @@ public class Constants {
 		WINDOW_TITLE_LIST_SPORTS_SESSIONS("window_title_list_sports_sessions"),
 		WINDOW_TITLE_ADD_EDIT_SPORTS_SESSIONS("window_title_add_edit_sports_sessions"),
 		WINDOW_TITLE_ADD_EDIT_CLIENT("window_title_add_edit_client"),
-
+        WINDOW_TITLE_VIEW_ADD_EDIT_TRAINER("window_title_view_add_edit_trainer"),
 		
 		// Button labels
 		BTN_MANAGE_CLIENTS_LABEL("btn_manage_clients_label"),
@@ -48,6 +48,10 @@ public class Constants {
 		BTN_EDIT_SPORTS_SESSION_LABEL("btn_edit_sports_session_label"),
 		BTN_GENERIC_SAVE_LABEL("btn_generic_save_label"),
 		BTN_GENERIC_CANCEL_LABEL("btn_generic_cancel_label"),
+        MNU_CLIENT_MANAGEMENT("mnu_client_management"),
+        MNU_ITEM_ADD_EDIT_CLIENT("mnu_item_add_edit_client"),
+        MNU_ADD_EDIT_CLIENT_GROUP("mnu_add_edit_client_group"),
+        MNU_VIEW_ADD_EDIT_TRAINER("mnu_view_add_edit_trainer"),
 
 		// Menu item labels
 		MNU_ADMIN_LABEL("mnu_admin_label"),
@@ -68,12 +72,17 @@ public class Constants {
         LBL_CLIENT_PHONE_NUMBER("lbl_client_phone_number"),
         LBL_CLIENT_PERSONAL_NUMBER("lbl_client_personal_number"),
 
+        //Trainer labels
+        LBL_TRAINER_NAME("lbl_trainer_name"),
+        LBL_TRAINER_PHONE_NUMBER("lbl_trainer_phone_number"),
+
         //Generic labels
         LBL_LOADING_ANIMATION("lbl_loading_animation_text"),
 		
 		// Table columns
 		TBL_COLUMN_TABLES_LIST_SPORTS_SESSIONS("tbl_column_tables_list_sports_sessions"),
 		TBL_COLUMN_TABLES_LIST_CLIENTS("tbl_column_tables_list_clients"),
+        TBL_COLUMN_TABLES_LIST_TRAINERS("tbl_column_tables_list_trainers"),
 
 		// Errors
         ERR_APPLICATION_ALLREADY_RUNNING("err_application_allready_running"),
@@ -83,7 +92,12 @@ public class Constants {
 		ERR_MAXSESSIONS_MUST_BE_GREATER_THAN_ZERO("err_maxsessions_must_be_greater_than_zero"),
 		ERR_REMAININGSESSIONS_MUST_BE_A_POSITIVE_NUMBER("err_remainingsessions_must_be_a_positive_number"),
         ERR_CLIENT_ADD_EDIT_NAME_INVALID("err_client_add_edit_name_invalid"),
-        ERR_CLIENT_ADD_EDIT_PHONE_NO_INVALID("err_client_add_edit_phone_no_invalid");
+        ERR_CLIENT_ADD_EDIT_PHONE_NO_INVALID("err_client_add_edit_phone_no_invalid"),
+        ERR_TRAINER_ADD_EDIT_NAME_INVALID("err_trainer_add_edit_name_invalid"),
+        ERR_TRAINER_ADD_EDIT_PHONE_NO_INVALID("err_trainer_add_edit_phone_no_invalid"),
+
+        // Nothing, just to ease the coding
+        ;
 
         String stringName;
 
